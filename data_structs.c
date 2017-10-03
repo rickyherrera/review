@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <limits.h>
 
+/*///////////////////////////////////////////////////////
+Stack data structure
+	supports: push, pop, is_full, is_empty
+	reference from geekforgeeks implementation
+///////////////////////////////////////////////////////*/
 struct Stack {
 	unsigned capacity;
 	int top;
@@ -48,9 +53,32 @@ void print_stack(struct Stack* stack) {
 	}
 }
 
+/*///////////////////////////////////////////////////////
+Array Functions
+///////////////////////////////////////////////////////*/
+
+void print_array(int* a[], int total) {
+	int count = 0;
+	while (count < total) {
+		printf("%d\n", a[count]);
+		count++;
+	}
+}
+//assumes int array
+void rotate_array(int** a[], int total){
+	int half = total / 2;
+	int count = 0;
+	while (count < half) {
+		a[count], a[total] = a[total], a[count];
+		count++;
+		total--;
+	}
+}
+
 int main() {
+
+	// Test Stack structure. 
     struct Stack* stack = init_stack(100);
- 
     push(stack, 10);
     push(stack, 20);
     push(stack, 30);
@@ -59,6 +87,11 @@ int main() {
 	print_stack(stack);
     printf("%d popped from stack\n", pop(stack));
  	print_stack(stack);
+
+ 	int tester[] = {0,1,2,3,4,5};
+ 	print_array(tester, 6);
+ 	rotate_array(tester, 6);
+ 	print_array(tester, 6);
 
     return 0;
 }
