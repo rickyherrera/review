@@ -57,7 +57,7 @@ void print_stack(struct Stack* stack) {
 Array Functions
 ///////////////////////////////////////////////////////*/
 
-void print_array(int* a[], int total) {
+void print_array(int a[], int total) {
 	int count = 0;
 	while (count < total) {
 		printf("%d\n", a[count]);
@@ -65,7 +65,7 @@ void print_array(int* a[], int total) {
 	}
 }
 //assumes int array
-void rotate_array(int** a[], int total){
+void rev_array(int *a[], int total){
 	int half = total / 2;
 	int count = 0;
 	while (count < half) {
@@ -88,9 +88,9 @@ int main() {
     printf("%d popped from stack\n", pop(stack));
  	print_stack(stack);
 
- 	int tester[] = {0,1,2,3,4,5};
+ 	int tester[6] = {0,1,2,3,4,5};
  	print_array(tester, 6);
- 	rotate_array(tester, 6);
+ 	rev_array(&tester, 6);
  	print_array(tester, 6);
 
     return 0;
